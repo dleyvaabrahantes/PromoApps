@@ -180,6 +180,6 @@ public struct PromoApps: View {
 
 @available(iOS 16.0.0, *)
 #Preview {
-    PromoApps(actionNo: {}, actionYes: {}, title: "Cuban Money")
+    PromoApps(actionNo: {}, actionYes: {}, title: "Cuban Money", nameImage: "")
 }
 
