@@ -8,19 +8,21 @@ public struct PromoApps: View {
     var actionNo: () -> Void
     var actionYes: () -> Void
     var title: String
+    var nameImage: String
     @State private var offsetY: CGFloat = -5
     @State private var widthShadow: CGFloat = 80
     
-    public init(actionNo: @escaping () -> Void, actionYes: @escaping () -> Void, title: String) {
+    public init(actionNo: @escaping () -> Void, actionYes: @escaping () -> Void, title: String,nameImage: String) {
         self.actionNo = actionNo
         self.actionYes = actionYes
         self.title = title
+        self.nameImage = nameImage
     }
     
     public var body: some View {
         VStack(spacing: 10) {
             // Icon and app name
-            Image(systemName: "book")
+            Image(nameImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 128, height: 128)
