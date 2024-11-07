@@ -7,20 +7,35 @@ import SwiftUI
 public struct PromoApps: View {
     var actionNo: () -> Void
     var actionYes: () -> Void
+    var actionClose: () -> Void
     var title: String
     var nameImage: String
     @State private var offsetY: CGFloat = -5
     @State private var widthShadow: CGFloat = 80
     
-    public init(actionNo: @escaping () -> Void, actionYes: @escaping () -> Void, title: String,nameImage: String) {
+    public init(actionNo: @escaping () -> Void, actionYes: @escaping () -> Void, title: String,nameImage: String, actionClose: @escaping () -> Void) {
         self.actionNo = actionNo
         self.actionYes = actionYes
         self.title = title
         self.nameImage = nameImage
+        self.actionClose = actionClose
     }
     
     public var body: some View {
         VStack(spacing: 10) {
+            HStack{
+                Spacer()
+                Button(action: actionClose, label: {
+                    
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundStyle(Color.white.opacity(0.6),
+                                         Color.secondary.opacity(0.4))
+                })
+            }
+            .padding()
+            Spacer()
             // Icon and app name
             Image(nameImage)
                 .resizable()
@@ -57,7 +72,7 @@ public struct PromoApps: View {
                         Text("4.9")
                             .font(.headline)
                     }
-                    Text("Rating")
+                    Text("Valoración")
                         .font(.headline)
                 }
                 .padding(.horizontal)
@@ -75,7 +90,7 @@ public struct PromoApps: View {
                             .font(.headline)
                             .padding(.horizontal,5)
                     }
-                    Text("Donwnloads")
+                    Text("Descargas")
                         .font(.headline)
                 }
                 .padding(.horizontal)
@@ -86,11 +101,11 @@ public struct PromoApps: View {
                 
                 VStack(alignment: .leading) {
                     HStack(spacing: 4) {
-                        Text("FREE")
+                        Text("GRATIS")
                             .font(.headline)
                         
                     }
-                    Text("Install")
+                    Text("Instalar")
                         .font(.headline)
                 }
                 .padding(.horizontal)
@@ -100,20 +115,21 @@ public struct PromoApps: View {
             
             HStack(spacing: 20){
                 Button(action: actionNo,label: {
-                    Text("Cancel")
+                    Text("CANCELAR")
                         .font(.title2)
                 })
                 .buttonStyle(.bordered)
                 Button(action: actionYes,label: {
-                    Text("GET")
+                    Text("OBTENER")
                         .font(.title2)
                 })
                 .buttonStyle(.borderedProminent)
                 
             }
             .padding(.top,20)
-            
+            Spacer()
         }
+        
     }
     //                    // App title
     //                    Text(title)
@@ -180,6 +196,6 @@ public struct PromoApps: View {
 
 @available(iOS 16.0.0, *)
 #Preview {
-    PromoApps(actionNo: {}, actionYes: {}, title: "Cuban Money", nameImage: "")
+    PromoApps(actionNo: {}, actionYes: {}, title: "Cuban Money", nameImage: "", actionClose: {})
 }
 
